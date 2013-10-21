@@ -5,15 +5,17 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     config: grunt.file.readJSON('config.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
+    target: grunt.option('dist') ? "dist" : "build",
+    distCSS: "https://raw.github.com/nquinlan/sendgrid-newsletter-widget/master/dist/widget.min.css",
     
     replace: {
       build: {
         src: ['src/widget.js'],
-        dest: 'build/',
+        dest: '<%= target %>/',
         replacements: [
           {
             from: 'CSS_URL',
-            to: '"<%= config.CSS_URL %>"'
+            to: '"<%if (target === "dist") { %><%= distCSS %><% }else{ %><%= config.CSS_URL %><% } %>"'
           }
         ]
       }
@@ -23,8 +25,8 @@ module.exports = function(grunt) {
         banner: '<%= banner %>\n'
       },
       build: {
-        src: 'build/widget.js',
-        dest: 'build/widget.min.js'
+        src: '<%= target %>/widget.js',
+        dest: '<%= target %>/widget.min.js'
       }
     },
     cssmin: {
@@ -33,7 +35,7 @@ module.exports = function(grunt) {
       },
       build: {
           src: 'src/widget.css',
-          dest: 'build/widget.min.css'
+          dest: '<%= target %>/widget.min.css'
       }
     }
   });
