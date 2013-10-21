@@ -145,12 +145,13 @@
 			css.setAttribute('type', 'text/css');
 			css.setAttribute('href', '//localhost/~nick/dev/new-newsletter-widget/src/widget.css');
 			document.getElementsByTagName('head')[0].appendChild(css);
-		};
+		}
 
+		var widgetInner = widget.innerHTML;
 		widget.innerHTML = '';
 		var form = document.createElement('form');
 		
-		form.innerHTML = '<div class="response"></div><label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label><input type="submit" value="submit">';
+		form.innerHTML = '<div class="response"></div>' + widgetInner + '<label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label><input type="submit" value="submit">';
 		widget.appendChild(form);
 
 		var readyEvent = CustomEvent("ready", {"info" : "ready"});
@@ -163,27 +164,37 @@
 		};
 
 		form.addEventListener("submit", function (e) {
+			widget;
 			var submitData = _extend({}, e),
 				submitEvent = CustomEvent("submit", submitData),
-				parent = this.parentNode;
+				widget = this.parentNode;
 			e.stopPropagation();
 			e.preventDefault();
 			
-			parent.dispatchEvent(submitEvent);
+			widget.dispatchEvent(submitEvent);
 
-			var token = parent.getAttribute("data-token"),
+			var token = widget.getAttribute("data-token"),
 				referrer = document.location.href,
 				inputs = this.getElementsByTagName("input"),
-				emails = [];
+				formValues = {};
 
 			_each(inputs, function (input) {
-				if(input.getAttribute("name") === "email"){
-					emails.push(input.value);
-				}
+				var name = input.getAttribute("name"),
+					wrappedName = "SG_widget[" + name + "]";
+
+				formValues[wrappedName] = input.value;
 			});
 
-			var email = emails[emails.length - 1],
-				qs = "p=" + encodeURIComponent(token) + "&r=" + encodeURIComponent(referrer) + "&SG_widget[email]=" + encodeURIComponent(email);
+			formValues.p = token;
+			formValues.r = referrer;
+
+			var qs = "";
+
+			_each(formValues, function (value, name) {
+				qs += "&" + name + "=" + encodeURIComponent(value);
+			});
+
+			qs = qs.substr(1);
 
 			sendRequest('//sendgrid.com/newsletter/addRecipientFromWidget?' + qs, function (req) {
 				var responseData = JSON.parse(req.response),
@@ -194,7 +205,7 @@
 					responseType,
 					responseEvent;
 				
-				var divs = parent.getElementsByTagName('div'),
+				var divs = widget.getElementsByTagName('div'),
 					responseDiv = divs[0];
 				_each(divs, function (div) {
 					var classes = div.className.split(" ");
