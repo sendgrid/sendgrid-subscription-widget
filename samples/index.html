@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New SendGrid Subscription Widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="./">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Subscription Widget Example</h1>
+        <div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO">
+          <label>Name <input type="text" name="name"></label>
+        </div>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+
+        <pre id="events"></pre>
+
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script>
+      var events = "ready submit error success";
+      // $(".sendgrid-subscription-widget").on(events, function (e) {
+      //   console.log(e);
+      //   $("#events").append(e.type + "\n");
+      // });
+      $.each(events.split(" "), function (i, type){
+        console.log(type);
+        document.getElementsByClassName("sendgrid-subscription-widget")[0].addEventListener(type, function (e) {
+          console.log(e);
+          $("#events").append(e.type + "\n");
+        });
+      });
+    </script>
+  </body>
+</html>
