@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     config: grunt.file.readJSON('config.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
     target: grunt.option('dist') ? "dist" : "build",
-    distCSS: "https://raw.github.com/nquinlan/sendgrid-newsletter-widget/master/dist/widget.min.css",
+    distCSS: "https://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.css",
     
     replace: {
       build: {
