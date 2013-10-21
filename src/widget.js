@@ -143,7 +143,7 @@
 			css.setAttribute('id', c + '-css');
 			css.setAttribute('rel', 'stylesheet');
 			css.setAttribute('type', 'text/css');
-			css.setAttribute('href', '//localhost/~nick/dev/new-newsletter-widget/widget.css');
+			css.setAttribute('href', '//localhost/~nick/dev/new-newsletter-widget/src/widget.css');
 			document.getElementsByTagName('head')[0].appendChild(css);
 		};
 
