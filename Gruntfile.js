@@ -3,13 +3,27 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    config: grunt.file.readJSON('config.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
+    
+    replace: {
+      build: {
+        src: ['src/widget.js'],
+        dest: 'build/',
+        replacements: [
+          {
+            from: 'CSS_URL',
+            to: '"<%= config.CSS_URL %>"'
+          }
+        ]
+      }
+    },
     uglify: {
       options: {
         banner: '<%= banner %>\n'
       },
       build: {
-        src: 'src/widget.js',
+        src: 'build/widget.js',
         dest: 'build/widget.min.js'
       }
     },
@@ -24,13 +38,11 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
-
-  // Load the plugin that provides the "cssmin" task.
   grunt.loadNpmTasks('grunt-css');
+  grunt.loadNpmTasks('grunt-text-replace');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'cssmin']);
+  grunt.registerTask('default', ['replace', 'uglify', 'cssmin']);
 
 };
