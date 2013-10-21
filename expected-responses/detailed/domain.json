@@ -1,0 +1,5 @@
+{
+	"success" : false,
+	"message" : "Your request cannot be processed.",
+	"detail" : "The domain making this request is not allowed to subscribe users to this list."
+}

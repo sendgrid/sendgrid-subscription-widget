@@ -1,0 +1,5 @@
+{
+	"success" : false,
+	"message" : "The email address is invalid.",
+	"detail" : "The email address provided is invalid."
+}

@@ -1,0 +1,5 @@
+{
+	"success" : false,
+	"message" : "Your request cannot be processed.",
+	"detail" : "The list you're attempting to subscribe to no longer exists."
+}
