@@ -143,7 +143,7 @@
 			css.setAttribute('id', c + '-css');
 			css.setAttribute('rel', 'stylesheet');
 			css.setAttribute('type', 'text/css');
-			css.setAttribute('href', "https://raw.github.com/nquinlan/sendgrid-newsletter-widget/master/dist/widget.min.css");
+			css.setAttribute('href', "https://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.css");
 			document.getElementsByTagName('head')[0].appendChild(css);
 		}
 
