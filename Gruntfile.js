@@ -3,9 +3,10 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '<%= banner %>\n'
       },
       build: {
         src: 'src/widget.js',
@@ -14,7 +15,7 @@ module.exports = function(grunt) {
     },
     cssmin: {
       options: {
-            banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
+            banner: '<%= banner %>'
       },
       build: {
           src: 'src/widget.css',
