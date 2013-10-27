@@ -196,7 +196,7 @@
 
 			qs = qs.substr(1);
 
-			sendRequest('//sendgrid.com/newsletter/addRecipientFromWidget?' + qs, function (req) {
+			sendRequest('https://sendgrid.com/newsletter/addRecipientFromWidget?' + qs, function (req) {
 				var responseData = JSON.parse(req.response),
 					responseEventData = {
 						"message" : responseData.message,
