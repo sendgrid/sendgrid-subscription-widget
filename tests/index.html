@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>SendGrid Widget Test Suite</title>
+
+	<!-- qunit -->
+	<link rel="stylesheet" href="vendor/qunit-theme-ninja.css" media="screen">
+
+</head>
+<body>
+	<div>
+		<h1 id="qunit-header">SendGrid Widget Test Suite</h1>
+		<h2 id="qunit-banner"></h2>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture"></div>
+	</div>
+
+	<!-- qunit -->
+	<script src="vendor/qunit-1.12.0.js"></script>
+
+	<!-- qunit config -->
+	<script>QUnit.config.testTimeout = 10*1000;</script>
+
+	<!-- sinon -->
+	<script src="vendor/sinon-1.7.3.js"></script>
+	<script src="vendor/sinon-ie-1.7.3.js"></script>
+	<script src="vendor/sinon-qunit-1.0.0.js"></script>
+
+	<!-- jquery -->
+	<script src="vendor/jquery-1.10.2.min.js"></script>
+
+	<!-- tests -->
+	<script src="tests/loading.js"></script>
+	<script src="tests/events.js"></script>
+	<script src="tests/fields.js"></script>
+
+</body>
+</html>
