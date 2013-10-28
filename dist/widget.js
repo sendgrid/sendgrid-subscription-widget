@@ -137,6 +137,11 @@
 
 	_each(widgets, function (widget) {
 
+		if(widget.getAttribute("data-executed") === "true"){
+			return;
+		}
+		widget.setAttribute("data-executed", "true")
+
 
 		if( checkDefault("css", widget, d) && !document.getElementById(c + '-css') ){
 			var css = document.createElement('link');
