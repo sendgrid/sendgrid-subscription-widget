@@ -160,7 +160,7 @@
 		widget.appendChild(form);
 
 		var messages = {
-			"Your request cannot be processed." : widget.getAttribute("data-message-processed") || "Unfortunately, an error occured. Please contact us to subscribe.",
+			"Your request cannot be processed." : widget.getAttribute("data-message-unprocessed") || "Unfortunately, an error occured. Please contact us to subscribe.",
 			"The email address is invalid." : widget.getAttribute("data-message-invalid") || "The email you provided is not a valid email address. Please fix it and try again.",
 			"You have subscribed to this Marketing Email." : widget.getAttribute("data-message-success") || "Thanks for subscribing."
 		};
@@ -198,14 +198,14 @@
 			qs = qs.substr(1);
 
 			sendRequest('https://sendgrid.com/newsletter/addRecipientFromWidget', function (req) {
-				var responseData = JSON.parse(req.response),
+				var responseData = JSON.parse(req.responseText),
 					responseEventData = {
 						"message" : responseData.message,
 						"detail" : responseData.detail || responseData.message
 					},
 					responseType,
 					responseEvent;
-				
+
 				var divs = widget.getElementsByTagName('div'),
 					responseDiv = divs[0];
 				_each(divs, function (div) {
