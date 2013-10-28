@@ -159,9 +159,6 @@
 		form.innerHTML = '<div class="response"></div>' + widgetInner + '<label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label><input type="submit" value="submit">';
 		widget.appendChild(form);
 
-		var readyEvent = CustomEvent("ready", {"info" : "ready"});
-		widget.dispatchEvent(readyEvent);
-
 		var messages = {
 			"Your request cannot be processed." : widget.getAttribute("data-message-processed") || "Unfortunately, an error occured. Please contact us to subscribe.",
 			"The email address is invalid." : widget.getAttribute("data-message-invalid") || "The email you provided is not a valid email address. Please fix it and try again.",
@@ -169,7 +166,6 @@
 		};
 
 		form.addEventListener("submit", function (e) {
-			widget;
 			var submitData = _extend({}, e),
 				submitEvent = CustomEvent("submit", submitData),
 				widget = this.parentNode;
@@ -232,5 +228,8 @@
 			}, qs);
 
 		});
+
+		var readyEvent = CustomEvent("ready", {"info" : "ready"});
+		widget.dispatchEvent(readyEvent);
 	});
 })();
