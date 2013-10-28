@@ -196,7 +196,7 @@
 
 			qs = qs.substr(1);
 
-			sendRequest('https://sendgrid.com/newsletter/addRecipientFromWidget?' + qs, function (req) {
+			sendRequest('https://sendgrid.com/newsletter/addRecipientFromWidget', function (req) {
 				var responseData = JSON.parse(req.response),
 					responseEventData = {
 						"message" : responseData.message,
@@ -213,7 +213,7 @@
 					if(_indexOf(classes, "response") !== -1){
 						responseDiv = div;
 					}
-				});
+				}, qs);
 
 				responseType = (responseData.success === false) ? "error" : "success";
 				responseEvent = CustomEvent(responseType, responseEventData);
@@ -224,7 +224,7 @@
 				}
 
 				widget.dispatchEvent(responseEvent);
-			});
+			}, qs);
 
 		});
 	});
