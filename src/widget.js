@@ -32,7 +32,7 @@
 	},
 
 	_identity = function(value) {
-	    return value;
+		return value;
 	},
 
 	_each = function (obj, iterator, context) {
@@ -52,25 +52,25 @@
 	},
 
 	_lookupIterator = function(value) {
-	    return (typeof value === "function") ? value : function(obj){ return obj[value]; };
+		return (typeof value === "function") ? value : function(obj){ return obj[value]; };
 	},
 
 	_sortedIndex = function(array, obj, iterator, context) {
-	    iterator = iterator == null ? _identity : _lookupIterator(iterator);
-	    var value = iterator.call(context, obj);
-	    var low = 0, high = array.length;
-	    while (low < high) {
-	      var mid = (low + high) >>> 1;
-	      iterator.call(context, array[mid]) < value ? low = mid + 1 : high = mid;
-	    }
-	    return low;
+		iterator = iterator == null ? _identity : _lookupIterator(iterator);
+		var value = iterator.call(context, obj);
+		var low = 0, high = array.length;
+		while (low < high) {
+			var mid = (low + high) >>> 1;
+			iterator.call(context, array[mid]) < value ? low = mid + 1 : high = mid;
+		}
+		return low;
 	},
 
 	_indexOf = function(array, item, isSorted) {
 		if (array == null) return -1;
 		var i = 0, length = array.length;
 		if (isSorted) {
-		  	if (typeof isSorted == 'number') {
+			if (typeof isSorted == 'number') {
 				i = (isSorted < 0 ? Math.max(0, length + isSorted) : isSorted);
 			} else {
 				i = _sortedIndex(array, item);
