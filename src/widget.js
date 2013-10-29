@@ -47,6 +47,17 @@
 		}
 	},
 
+	_sortedIndex = function(array, obj, iterator, context) {
+	    iterator = iterator == null ? _.identity : lookupIterator(iterator);
+	    var value = iterator.call(context, obj);
+	    var low = 0, high = array.length;
+	    while (low < high) {
+	      var mid = (low + high) >>> 1;
+	      iterator.call(context, array[mid]) < value ? low = mid + 1 : high = mid;
+	    }
+	    return low;
+	},
+
 	_indexOf = function(array, item, isSorted) {
 		if (array == null) return -1;
 		var i = 0, length = array.length;
@@ -54,7 +65,7 @@
 		  	if (typeof isSorted == 'number') {
 				i = (isSorted < 0 ? Math.max(0, length + isSorted) : isSorted);
 			} else {
-				i = _.sortedIndex(array, item);
+				i = _sortedIndex(array, item);
 				return array[i] === item ? i : -1;
 			}
 		}
