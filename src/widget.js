@@ -140,7 +140,7 @@
 		if(widget.getAttribute("data-executed") === "true"){
 			return;
 		}
-		widget.setAttribute("data-executed", "true")
+		widget.setAttribute("data-executed", "true");
 
 
 		if( checkDefault("css", widget, d) && !document.getElementById(c + '-css') ){
