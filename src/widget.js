@@ -31,6 +31,10 @@
 		return keys;
 	},
 
+	_identity = function(value) {
+	    return value;
+	},
+
 	_each = function (obj, iterator, context) {
 		if (obj == null) return;
 		if (Array.prototype.forEach && obj.forEach === Array.prototype.forEach) {
@@ -47,8 +51,12 @@
 		}
 	},
 
+	_lookupIterator = function(value) {
+	    return (typeof value === "function") ? value : function(obj){ return obj[value]; };
+	},
+
 	_sortedIndex = function(array, obj, iterator, context) {
-	    iterator = iterator == null ? _.identity : lookupIterator(iterator);
+	    iterator = iterator == null ? _identity : _lookupIterator(iterator);
 	    var value = iterator.call(context, obj);
 	    var low = 0, high = array.length;
 	    while (low < high) {
