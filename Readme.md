@@ -5,8 +5,10 @@ A new SendGrid subscription widget that works with existing infrastructure.
 
 Include the following code on the page where you wish the widget to appear.
 
-	<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO"></div>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+```html
+<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO"></div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+```
 
 `token` is the `p` parameter from the current SendGrid Subscription Widget URL
 
@@ -29,16 +31,18 @@ Settings can be controlled through a number of data attributes.
 ## CSS
 The resulting form is fully styleable. The resulting form follows the DOM tree of:
 
-	<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO" data-executed="true">
-	        <form>
-	            <div class="response"></div>
-	            <label>
-	            	<span>Email</span>
-	            	<input type="email" name="email" placeholder="you@example.com" />
-	            </label>
-	            <input type="submit" value="submit" />
-	        </form>
-	    </div>
+```html
+<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO" data-executed="true">
+    <form>
+        <div class="response"></div>
+        <label>
+        	<span>Email</span>
+        	<input type="email" name="email" placeholder="you@example.com" />
+        </label>
+        <input type="submit" value="submit" />
+    </form>
+</div>
+```
 	    
 With this you may style using descendant selectors. If you wish to use both the default widget styles _and_ your own, it is recommended you use `div.sendgrid-subscription-widget` as your base selector. This specificity overrides the default styles so you may do what you wish, without conflict.
 
@@ -47,10 +51,12 @@ You may specify whatever you want to include in the form by enclosing it in the 
 
 ### Example
 
-	<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO">
-	    <input type="text" name="happy" value="go lucky" />
-	</div>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+```html
+<div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO">
+    <input type="text" name="happy" value="go lucky" />
+</div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+```
 
 If you have additional fields stored by SendGrid that you wish to store with the subscription widget, you must place them in this tag. (Generally the fields will follow the convention of lowercasing the field name, so `Name` becomes `name`)
 
@@ -73,30 +79,34 @@ This code sample adds complex error messages that are not be possible to include
 
 _This example is written assuming you're using jQuery (it of course can be written without the library)._
 
-	$(".sendgrid-subscription-widget").on("success", function (e) {
-	    $(this).find(".response").addClass("success").html("<img src=\"colon/d/face.png\" alt=\"YAY!\"> " + e.detail);
-	});
+```js
+$(".sendgrid-subscription-widget").on("success", function (e) {
+    $(this).find(".response").addClass("success").html("<img src=\"colon/d/face.png\" alt=\"YAY!\"> " + e.detail);
+});
 
-	$(".sendgrid-subscription-widget").on("error", function (e) {
-	    $(this).find(".response").addClass("error").html("<img src=\"sad/panda/face.png\" alt=\"D:\"> " + e.detail);
-	});
+$(".sendgrid-subscription-widget").on("error", function (e) {
+    $(this).find(".response").addClass("error").html("<img src=\"sad/panda/face.png\" alt=\"D:\"> " + e.detail);
+});
+```
 
 #### Add A Loader To The Widget
 This code sample will add a loader and disable the submission button (to prevent accidental double submissions). 
 
 _This example is written assuming you're using jQuery (it of course can be written without the library)._
 
-	$(".sendgrid-subscription-widget").on("submit", function () {
-	    $(this).addClass("loading")
-	           .append("<img src=\"my/super/cool/loading.gif\" alt=\"Loading...\">");
-	    $(this).find("input[type=submit").attr("disabled", "disabled");
+```js
+$(".sendgrid-subscription-widget").on("submit", function () {
+    $(this).addClass("loading")
+           .append("<img src=\"my/super/cool/loading.gif\" alt=\"Loading...\">");
+    $(this).find("input[type=submit").attr("disabled", "disabled");
 
-	    $(".sendgrid-subscription-widget").on("success error", function () {
-	        $(this).removeClass("loading")
-	        $(this).find("img").remove();
-	        $(this).find("input[type=submit").removeAttr("disabled");
-	    });
-	});
+    $(".sendgrid-subscription-widget").on("success error", function () {
+        $(this).removeClass("loading")
+        $(this).find("img").remove();
+        $(this).find("input[type=submit").removeAttr("disabled");
+    });
+});
+```
 
 _**Note**: It's better to [namespace your events](http://api.jquery.com/on/#event-names) and them off to prevent a possible race condition, [(as seen in this gist)](https://gist.github.com/nquinlan/5f73a310830d56d0c532)._
 
