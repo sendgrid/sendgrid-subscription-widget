@@ -236,6 +236,7 @@
 				}, qs);
 
 				responseType = (responseData.success === false) ? "error" : "success";
+				responseEventData.type = responseType;
 				responseEvent = CustomEvent(responseType, responseEventData);
 
 				if(checkDefault("messages", widget, d)){
