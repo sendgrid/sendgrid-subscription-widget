@@ -32,7 +32,7 @@
 	},
 
 	_identity = function(value) {
-	    return value;
+		return value;
 	},
 
 	_each = function (obj, iterator, context) {
@@ -52,25 +52,25 @@
 	},
 
 	_lookupIterator = function(value) {
-	    return (typeof value === "function") ? value : function(obj){ return obj[value]; };
+		return (typeof value === "function") ? value : function(obj){ return obj[value]; };
 	},
 
 	_sortedIndex = function(array, obj, iterator, context) {
-	    iterator = iterator == null ? _identity : _lookupIterator(iterator);
-	    var value = iterator.call(context, obj);
-	    var low = 0, high = array.length;
-	    while (low < high) {
-	      var mid = (low + high) >>> 1;
-	      iterator.call(context, array[mid]) < value ? low = mid + 1 : high = mid;
-	    }
-	    return low;
+		iterator = iterator == null ? _identity : _lookupIterator(iterator);
+		var value = iterator.call(context, obj);
+		var low = 0, high = array.length;
+		while (low < high) {
+			var mid = (low + high) >>> 1;
+			iterator.call(context, array[mid]) < value ? low = mid + 1 : high = mid;
+		}
+		return low;
 	},
 
 	_indexOf = function(array, item, isSorted) {
 		if (array == null) return -1;
 		var i = 0, length = array.length;
 		if (isSorted) {
-		  	if (typeof isSorted == 'number') {
+			if (typeof isSorted == 'number') {
 				i = (isSorted < 0 ? Math.max(0, length + isSorted) : isSorted);
 			} else {
 				i = _sortedIndex(array, item);
@@ -179,7 +179,7 @@
 		widget.appendChild(form);
 
 		var messages = {
-			"Your request cannot be processed." : widget.getAttribute("data-message-unprocessed") || "Unfortunately, an error occured. Please contact us to subscribe.",
+			"Your request cannot be processed." : widget.getAttribute("data-message-unprocessed") || "Unfortunately, an error occurred. Please contact us to subscribe.",
 			"The email address is invalid." : widget.getAttribute("data-message-invalid") || "The email you provided is not a valid email address. Please fix it and try again.",
 			"You have subscribed to this Marketing Email." : widget.getAttribute("data-message-success") || "Thanks for subscribing."
 		};
@@ -193,7 +193,7 @@
 			
 			widget.dispatchEvent(submitEvent);
 
-			var token = widget.getAttribute("data-token"),
+			var token = decodeURIComponent(widget.getAttribute("data-token")),
 				referrer = document.location.href,
 				inputs = this.getElementsByTagName("input"),
 				formValues = {};
@@ -236,6 +236,7 @@
 				}, qs);
 
 				responseType = (responseData.success === false) ? "error" : "success";
+				responseEventData.type = responseType;
 				responseEvent = CustomEvent(responseType, responseEventData);
 
 				if(checkDefault("messages", widget, d)){

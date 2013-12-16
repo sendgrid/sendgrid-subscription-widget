@@ -193,7 +193,7 @@
 			
 			widget.dispatchEvent(submitEvent);
 
-			var token = widget.getAttribute("data-token"),
+			var token = decodeURIComponent(widget.getAttribute("data-token")),
 				referrer = document.location.href,
 				inputs = this.getElementsByTagName("input"),
 				formValues = {};
