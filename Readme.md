@@ -47,7 +47,7 @@ The resulting form is fully styleable. The resulting form follows the DOM tree o
 With this you may style using descendant selectors. If you wish to use both the default widget styles _and_ your own, it is recommended you use `div.sendgrid-subscription-widget` as your base selector. This specificity overrides the default styles so you may do what you wish, without conflict.
 
 ## Additional Form Fields
-You may specify whatever you want to include in the form by enclosing it in the `	`<div class="sendgrid-subscription-widget">` tag.
+You may specify whatever you want to include in the form by enclosing it in the `<div class="sendgrid-subscription-widget">` tag.
 
 ### Example
 
