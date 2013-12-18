@@ -507,7 +507,7 @@ var jsonParse = (function () {
       form = e.srcElement;
 			
       var submitData = _extend({}, e),
-				submitEvent = CustomEvent("widget-submit", submitData), 
+				submitEvent = CustomEvent("sent", submitData), 
         widget = form.parentNode;
 
 			e.stopPropagation ? e.stopPropagation() : null;
