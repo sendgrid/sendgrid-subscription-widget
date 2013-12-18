@@ -1,3 +1,4 @@
+//safe JSON parsing code, for IE7
 //https://code.google.com/p/json-sans-eval/
 var jsonParse = (function () {
   var number
@@ -188,9 +189,11 @@ var jsonParse = (function () {
 		messages : true
 	};
 
-  //ensure we have this method in IE
-  window.hasOwnProperty = function(obj){
-    return (this[obj]) ? true : false;
+  if(typeof(window.hasOwnProperty) != "undefined") {
+    //ensure we have this method in IE
+    window.hasOwnProperty = function(obj){
+      return (this[obj]) ? true : false;
+    }
   }
 
   var parseJSON = function(text){
@@ -305,7 +308,6 @@ var jsonParse = (function () {
   }
 
   var dispatchCustomEvent = function(el, event) {
-    console.log(el);
     if(el.dispatchEvent){
         el.dispatchEvent(event);
     }else if(el.fireEvent && htmlEvents['on'+event.eventName]){// IE < 9
@@ -400,11 +402,11 @@ var jsonParse = (function () {
     }
 
 		var req = createXMLHTTPObject();
-    console.log(postData);
 		if (!req) return;
 		var method = (postData) ? "POST" : "GET";
 		
     if (usingXdr){
+      //XDR does not support content-type other than text/plain, so no POST
       req.open("GET",url + "?" + postData,true);
       req.onload = function(){ callback(req) };
       req.send();
