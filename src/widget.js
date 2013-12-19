@@ -408,7 +408,7 @@ var jsonParse = (function () {
     if (usingXdr){
       //XDR does not support content-type other than text/plain, so no POST
       req.open("GET",url + "?" + postData,true);
-      req.onload = function(){ callback(req) };
+      req.onload = function(){ return callback(req) };
       req.send();
     } else {
     if (postData)
