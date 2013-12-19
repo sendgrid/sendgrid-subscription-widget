@@ -198,8 +198,10 @@ var jsonParse = (function () {
 
 	var parseJSON = function(text){
 		if(typeof(JSON)!="undefined") {
+			//native JSON parser
 			return JSON.parse(text);
 		} else {
+			//no native parser (ie7)
 			return jsonParse(text);
 		}
 	}
@@ -334,8 +336,6 @@ var jsonParse = (function () {
 		CustomEvent.prototype = window.CustomEvent.prototype;
 	} else {
 		//for old browsers that suck and don't have DOM4 CustomEvents
-		alert('looks like your browser sucks. attemping to hack around it!');
-
 		var CustomEvent = function(eventName, params) {
 			var evt;
 			if(document.createEvent){
