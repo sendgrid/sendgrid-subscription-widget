@@ -354,6 +354,7 @@ var jsonParse = (function () {
 		{
 			Element = function(){};
 
+			//make sure the functions we need return elements based on the prototype
 			var __createElement = document.createElement;
 			document.createElement = function(tagName)
 			{
@@ -377,6 +378,7 @@ var jsonParse = (function () {
 	}
 
 	_extend(Element.prototype, {
+		//extend elements to have an IE-friendly event listener
 		addCustomEventListener: function(type,handler){
 			if(this.addEventListener){
 					this.addEventListener(type,handler,false);
@@ -387,8 +389,6 @@ var jsonParse = (function () {
 			}
 		}
 	});
-
-	var usingXdr = false;
 
 	// Shamelessly taken from Quirksmode and hacked to bits
 	// http://www.quirksmode.org/js/xmlhttp.html
@@ -405,7 +405,7 @@ var jsonParse = (function () {
 		if (!req) return;
 		var method = (postData) ? "POST" : "GET";
 		
-		if (usingXdr){
+		if (typeof XDomainRequest !== "undefined"){
 			//XDR does not support content-type other than text/plain, so no POST
 			req.open("GET",url + "?" + postData,true);
 			req.onload = function(){ return callback(req) };
