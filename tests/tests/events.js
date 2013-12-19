@@ -29,15 +29,15 @@ $(function () {
 		$(widgetDefaultScript).appendTo("#qunit-fixture");
 	});
 
-	asyncTest("should broadcast submit event", function () {
+	asyncTest("should broadcast sent event", function () {
 		var server = sinon.fakeServer.create();
 		server.respondWith("POST", "https://sendgrid.com/newsletter/addRecipientFromWidget",
 							[200, { "Content-Type": "application/json" }, responses.good]);
 
 		$(widgetDefaultDiv).on("ready", function () {
 			prepareAndFillForm(server);
-		}).on("submit", function () {
-			ok(true, "submit event dispatched");
+		}).on("sent", function () {
+			ok(true, "sent event dispatched");
 			start();
 		}).appendTo("#qunit-fixture");
 		$(widgetDefaultScript).appendTo("#qunit-fixture");

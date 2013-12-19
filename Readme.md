@@ -68,7 +68,7 @@ Events are broadcast to the DOM node `div.sendgrid-subscription-widget`, where t
 |   event   |                 description                  |
 |-----------|----------------------------------------------|
 | `ready`   | the form has been loaded                     |
-| `submit`  | the form created by the widget been submitted |
+| `sent`    | the form created by the widget been submitted |
 | `error`   | there was an error with the form submission  |
 | `success` | the email was subscribed                     |
 
@@ -95,7 +95,7 @@ This code sample will add a loader and disable the submission button (to prevent
 _This example is written assuming you're using jQuery (it of course can be written without the library)._
 
 ```js
-$(".sendgrid-subscription-widget").on("submit", function () {
+$(".sendgrid-subscription-widget").on("sent", function () {
     $(this).addClass("loading")
            .append("<img src=\"my/super/cool/loading.gif\" alt=\"Loading...\">");
     $(this).find("input[type=submit").attr("disabled", "disabled");
