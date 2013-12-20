@@ -117,7 +117,7 @@ _**Note**: It's better to [namespace your events](http://api.jquery.com/on/#even
 
 By default `grunt` will compile to the `build/` directory, this will allow you to develop easily. To compile for testing use `grunt --test`, for distribution use `grunt --dist`.
 
-Please give me a shout if you have any questions.
+Please give [me](https://github.com/nquinlan/) a shout if you have any questions.
 
 ### Environment Setup
 To develop this widget, you'll need `node.js`. Run `npm install` in the root directory of this plugin to get setup. Additionally, you'll need duplicate and rename `config.sample.json` to `config.json`
