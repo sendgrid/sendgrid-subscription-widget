@@ -115,7 +115,7 @@ _**Note**: It's better to [namespace your events](http://api.jquery.com/on/#even
 ## Development
 [Thanks for considering developing this plugin further](http://static.fjcdn.com/pictures/You_9d84b5_503544.png)! If you make major changes please also write tests for them. This plugin uses Grunt to do all the heavy lifting of minifying and naming things. 
 
-By default `grunt` will compile to the `build/` directory, this will allow you to develop and write tests. To compile for distribution use `grunt --dist`.
+By default `grunt` will compile to the `build/` directory, this will allow you to develop easily. To compile for testing use `grunt --test`, for distribution use `grunt --dist`.
 
 Please give me a shout if you have any questions.
 
