@@ -108,7 +108,7 @@ $(".sendgrid-subscription-widget").on("sent", function () {
 });
 ```
 
-_**Note**: It's better to [namespace your events](http://api.jquery.com/on/#event-names) and them off to prevent a possible race condition, [(as seen in this gist)](https://gist.github.com/nquinlan/5f73a310830d56d0c532)._
+_**Note**: It's better to [namespace your events](http://api.jquery.com/on/#event-names) and then turn them off to prevent a possible race condition, [(as seen in this gist)](https://gist.github.com/nquinlan/5f73a310830d56d0c532)._
 
 ---
 
