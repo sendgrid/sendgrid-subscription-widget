@@ -1,8 +1,7 @@
 $(function () {
 	var widgetDefaultDiv = "<div class=\"sendgrid-subscription-widget\" data-token=\"NOTAREALTOKEN\" data-css=\"false\"><input type=\"text\" name=\"name\"><input type=\"text\" name=\"number\"></div>";
-	var widgetDefaultScript = "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='../build/widget.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>";
+	var widgetDefaultScript = "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='widget/widget.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>";
 	var widgetDefault = widgetDefaultDiv + widgetDefaultScript;
-	var successMessage = '{"message":"You have subscribed to this Marketing Email.","success":true}';
 
 	var queryStringToObj = function (query) {
 		var data = query.split("&");
@@ -26,33 +25,27 @@ $(function () {
 
 	});
 
-	// test("nick!", function () {
-	// 	deepEqual({"a" : "aa", "b" : "bb"}, {"b" : "bb", "a" : "aa"});
-	// });
-
 	asyncTest("additional fields should be serialized and sent", function () {
-		var server = sinon.fakeServer.create();
-		server.respondWith("POST", "https://sendgrid.com/newsletter/addRecipientFromWidget",
-							[200, { "Content-Type": "application/json" }, successMessage]);
+		
 
 		var values = {"email" : "nick@sendgrid.com", "name" : "Nick Quinlan", "number" : "42"};
 
 		$(widgetDefaultDiv).on("ready", function () {
 			$("#qunit-fixture form").on("submit", function () {
-				var requestBody = server.requests[0].requestBody;
-				
-				console.log(requestBody);
 
-				$.each(values, function (key, value) {
-					console.log(key, value);
-					var expected = "SG_widget[" + key + "]=" + encodeURIComponent(value);
-					var match = requestBody.indexOf(expected);
-					var okay = (match != -1);
-					ok(okay, key + " matches expected value");
+				$.post("https://sg-subscription-tests.herokuapp.com/subscribe/response", { type : 'good' }, function () {
+
+					$.get("https://sg-subscription-tests.herokuapp.com/subscribe/request", {}, function (data) {
+
+						$.each(values, function (key, value) {
+							console.log(key, value);
+							ok(data.SG_widget[key], key + " matches expected value");
+						});
+						start();
+					});
+					
 				});
-
-				start();
-				server.respond();
+				
 			});
 
 			$.each(values, function (key, value) {
