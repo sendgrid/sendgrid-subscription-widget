@@ -38,7 +38,6 @@ $(function () {
 					$.get("https://sg-subscription-tests.herokuapp.com/subscribe/request", {}, function (data) {
 
 						$.each(values, function (key, value) {
-							console.log(key, value);
 							ok(data.SG_widget[key], key + " matches expected value");
 						});
 						start();
