@@ -1,4 +1,4 @@
 node_modules
 config.json
-build/*
-tests/widget/*
+build/
+tests/widget/
