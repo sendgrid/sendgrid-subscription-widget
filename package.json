@@ -1,6 +1,6 @@
 {
   "name": "sendgrid-subscription-widget",
-  "version": "0.0.1-dev",
+  "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.2",
