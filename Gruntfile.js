@@ -14,9 +14,7 @@ module.exports = function(grunt) {
     config: grunt.file.readJSON('config.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
     target: target,
-    distCSS: "https://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.css",
     subscribeURL: "sendgrid.com/newsletter/addRecipientFromWidget",
-    testURL: "sg-subscription-tests.herokuapp.com/subscribe",
     
     replace: {
       build: {
@@ -25,11 +23,11 @@ module.exports = function(grunt) {
         replacements: [
           {
             from: 'CSS_URL',
-            to: '"<%if (target === "dist") { %><%= distCSS %><% }else{ %><%= config.CSS_URL %><% } %>"'
+            to: '"<%if (target === "dist") { %><%= config.DISTRIBUTION_CSS %><% }else{ %><%= config.CSS_URL %><% } %>"'
           },
           {
             from: '<%= subscribeURL %>',
-            to: '<%= testURL %>'
+            to: '<%= config.TEST_URL %>'
           }
         ]
       }

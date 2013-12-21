@@ -1,3 +1,5 @@
 {
-	"CSS_URL" : "build/widget.min.css"
+	"CSS_URL" : "build/widget.min.css",
+	"DISTRIBUTION_CSS" : "https://raw.github.com/nquinlan/sendgrid-subscription-widget/master/dist/widget.min.css",
+	"TEST_URL" : "sg-subscription-tests.herokuapp.com/subscribe"
 }
