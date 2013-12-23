@@ -113,6 +113,17 @@ $(".sendgrid-subscription-widget").on("sent", function () {
 
 _**Note**: It's better to [namespace your events](http://api.jquery.com/on/#event-names) and then turn them off to prevent a possible race condition, [(as seen in this gist)](https://gist.github.com/nquinlan/5f73a310830d56d0c532)._
 
+#### Track A Subscription With Google Analytics
+This code will send an event to Google Analytics any time someone subscribes to your emails, allowing you to create goals and metrics and better understand your users.
+
+_This example is written assuming you're using jQuery (it of course can be written without the library)._
+
+```js
+$(".sendgrid-subscription-widget").on("success", function () {
+    _gaq.push(['_trackEvent', 'Form', 'Subscribe', 'Newsletter']);
+});
+```
+
 ---
 
 ## Development
