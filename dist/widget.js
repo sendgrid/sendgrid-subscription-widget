@@ -495,8 +495,10 @@ var jsonParse = (function () {
 		var widgetInner = widget.innerHTML;
 		widget.innerHTML = '';
 		var form = document.createElement('form');
+
+		var submitText = widget.getAttribute("data-submit-text") || "Subscribe";
 		
-		form.innerHTML = '<div class="response"></div>' + widgetInner + '<label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label><input type="submit" value="submit">';
+		form.innerHTML = '<div class="response"></div>' + widgetInner + '<label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label><input type="submit" value="' + submitText  + '">';
 		widget.appendChild(form);
 
 		var messages = {
