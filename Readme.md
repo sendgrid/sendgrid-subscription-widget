@@ -30,6 +30,7 @@ Settings can be controlled through a number of data attributes.
 | `data-message-unprocessed` | `string`              | "Unfortunately, an error occurred. Please contact us to subscribe."                 | no       | the message shown when the form could not be processed for whatever reason                                                                            |
 | `data-message-invalid`     | `string`              | "The email you provided is not a valid email address. Please fix it and try again." | no       | the message shown when an invalid email address is given. _(modern browsers will not allow the form to submit and display a **different** message)_  |
 | `data-message-success`     | `string`              | "Thanks for subscribing."                                                           | no       | the message shown when a subscription is successful                                                                                                  |
+| `data-submit-text`         | `string`              | "Subscribe"                                                                         | no       | the text value of the submit button
 
 ## CSS
 The resulting form is fully styleable. The resulting form follows the DOM tree of:
