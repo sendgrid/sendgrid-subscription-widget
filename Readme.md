@@ -7,7 +7,7 @@ Include the following code on the page where you wish the widget to appear.
 
 ```html
 <div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO"></div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/sendgrid/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 ```
 
 `token` is the `p` parameter from the current SendGrid Subscription Widget URL
@@ -15,9 +15,6 @@ Include the following code on the page where you wish the widget to appear.
 _Samples can be found on [Github Pages](http://sendgrid.github.io/sendgrid-subscription-widget/samples/index.html)._
 
 **Note**: With current architecture this widget will only work on the domain specified when generating the token.
-
-### Caveat
-Although, the code above will work, at this stage of development, it is likely better to download the [script](https://github.com/sendgrid/sendgrid-subscription-widget/zipball/master/dist) and upload it to your own server. _Make sure you change all references to its location on Github to its location on your own server._ This can be done manually (find and replace) or via changing `DISTRIBUTION_CSS` in `config.json` and running `grunt --dist`.
 
 ## Settings
 Settings can be controlled through a number of data attributes.
@@ -59,7 +56,7 @@ You may specify whatever you want to include in the form by enclosing it in the 
 <div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO">
     <input type="text" name="happy" value="go lucky" />
 </div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://raw.github.com/sendgrid/sendgrid-subscription-widget/master/dist/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 ```
 
 If you have additional fields stored by SendGrid that you wish to store with the subscription widget, you must place them in this tag. (Generally the fields will follow the convention of lowercasing the field name, so `Name` becomes `name`)

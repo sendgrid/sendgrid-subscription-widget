@@ -488,7 +488,7 @@ var jsonParse = (function () {
 			css.setAttribute('id', c + '-css');
 			css.setAttribute('rel', 'stylesheet');
 			css.setAttribute('type', 'text/css');
-			css.setAttribute('href', "https://raw.github.com/sendgrid/sendgrid-subscription-widget/master/dist/widget.min.css");
+			css.setAttribute('href', "//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css");
 			document.getElementsByTagName('head')[0].appendChild(css);
 		}
 
