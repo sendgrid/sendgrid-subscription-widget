@@ -27,7 +27,7 @@ module.exports = function(grunt) {
           },
           {
             from: '<%= subscribeURL %>',
-            to: '<%= config.TEST_URL %>'
+            to: '<%if (target === "test") { %><%= config.TEST_URL %><% }else{ %><%= subscribeURL %><% } %>'
           }
         ]
       }

@@ -545,7 +545,7 @@ var jsonParse = (function () {
 
 			qs = qs.substr(1);
 
-			sendRequest('sg-subscription-tests.herokuapp.com/subscribe', function (req) {
+			sendRequest('sendgrid.com/newsletter/addRecipientFromWidget', function (req) {
 				var responseData = parseJSON(req.responseText),
 					responseEventData = {
 						"message" : responseData.message,
