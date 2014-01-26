@@ -7,4 +7,4 @@ env:
       secure: "YnitZ2J0KVwcXimw+9hKzWkRFvwOSMYjawosfuSMCyFHq8AgYnSmXqWD+7zAkix4/dwPMELFSrxwfL5oy24Ft473tXVWTyVBsm//Cr8vfhPIXKh7efTePTs7qtzL1LZ++LC40korg38xonMbCvIygCnLqbkkyBeaV28EAoUn5xU="
 before_script:
   - npm install -g grunt-cli
-  - \"echo '{\"CSS_URL\" : \"build/widget.min.css\",\"DISTRIBUTION_CSS\" : \"//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css\",\"TEST_URL\" : \"sg-subscription-tests.herokuapp.com/subscribe\"}' >> config.json"
+  - "echo '{\"CSS_URL\" : \"build/widget.min.css\",\"DISTRIBUTION_CSS\" : \"//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css\",\"TEST_URL\" : \"sg-subscription-tests.herokuapp.com/subscribe\"}' >> config.json"
