@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+  // Build Location
   var target = "build";
   if(grunt.option('dist')){
     var target = "dist";
@@ -7,6 +7,33 @@ module.exports = function(grunt) {
   if(grunt.option('test')){
     var target = "tests/widget";
   }
+
+  // Define Sauce Lab Browsers
+  var browsers = [{
+        browserName: "firefox",
+        platform: "Linux"
+    }, {
+        browserName: "chrome",
+        platform: "XP"
+    }, {
+        browserName: "chrome",
+        platform: "linux"
+    }, {
+        browserName: "internet explorer",
+        platform: "Windows 8",
+        version: "10"
+    }, {
+        browserName: "internet explorer",
+        platform: "Windows 7",
+        version: "9"
+    },
+    {
+        browserName: "internet explorer",
+        platform: "Windows XP",
+        version: "8"
+    }
+  ];
+
 
   // Project configuration.
   grunt.initConfig({
@@ -49,14 +76,38 @@ module.exports = function(grunt) {
           src: 'src/widget.css',
           dest: '<%= target %>/widget.min.css'
       }
+    },
+    connect: {
+      server: {
+        options: {
+          base: "",
+          port: 9999
+        }
+      }
+    },
+    'saucelabs-qunit': {
+      all: {
+        options: {
+          urls: ["http://127.0.0.1:9999/tests/index.html"],
+          tunnelTimeout: 5,
+          build: process.env.TRAVIS_JOB_ID,
+          concurrency: 3,
+          browsers: browsers,
+          testname: "tests",
+          tags: ["master"]
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-saucelabs');
 
   // Default task(s).
   grunt.registerTask('default', ['replace', 'uglify', 'cssmin']);
+  grunt.registerTask('cloud-test', ['connect', 'replace', 'uglify', 'cssmin', 'saucelabs-qunit']);
 
 };

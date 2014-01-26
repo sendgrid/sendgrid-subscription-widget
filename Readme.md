@@ -1,6 +1,8 @@
 # SendGrid Subscription Widget
 A new SendGrid subscription widget that works with existing infrastructure.
 
+[![Selenium Test Status](https://saucelabs.com/buildstatus/sg-widget)](https://saucelabs.com/u/sg-widget)
+
 ## Basic Use
 
 Include the following code on the page where you wish the widget to appear.
