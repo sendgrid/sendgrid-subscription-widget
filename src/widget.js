@@ -189,7 +189,7 @@ var jsonParse = (function () {
 		messages : true
 	};
 
-	if(typeof(window.hasOwnProperty) != "undefined") {
+	if(typeof(window.hasOwnProperty) == "undefined") {
 		//ensure we have this method in IE
 		window.hasOwnProperty = function(obj){
 			return (this[obj]) ? true : false;
@@ -216,7 +216,7 @@ var jsonParse = (function () {
 	var _keys = Object.keys || function(obj) {
 		if (obj !== Object(obj)) throw new TypeError('Invalid object');
 		var keys = [];
-		for (var key in obj) if (hasOwnProperty.call(obj, key)) keys.push(key);
+		for (var key in obj) if (window.hasOwnProperty.call(obj, key)) keys.push(key);
 		return keys;
 	},
 
@@ -488,7 +488,7 @@ var jsonParse = (function () {
 			css.setAttribute('id', c + '-css');
 			css.setAttribute('rel', 'stylesheet');
 			css.setAttribute('type', 'text/css');
-			css.setAttribute('href', CSS_URL);
+			css.setAttribute('href', "//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css");
 			document.getElementsByTagName('head')[0].appendChild(css);
 		}
 
@@ -505,10 +505,11 @@ var jsonParse = (function () {
 			"Your request cannot be processed." : widget.getAttribute("data-message-unprocessed") || "Unfortunately, an error occurred. Please contact us to subscribe.",
 			"The email address is invalid." : widget.getAttribute("data-message-invalid") || "The email you provided is not a valid email address. Please fix it and try again.",
 			"You have subscribed to this Marketing Email." : widget.getAttribute("data-message-success") || "Thanks for subscribing."
+	var parseJSON = function(text){
 		};
 
 		form.addCustomEventListener("submit", function (e) {
-			form = e.srcElement;
+			form = e.srcElement ? e.srcElement : e.target;
 			
 			var submitData = _extend({}, e),
 				submitEvent = CustomEvent("sent", submitData), 
@@ -518,9 +519,11 @@ var jsonParse = (function () {
 			e.preventDefault ? e.preventDefault() : null;
 			
 			//IE7 lol
-			event.preventDefault ? event.preventDefault() : event.returnValue = false;
+			if (typeof(event) != "undefined") {
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      }
 
-			dispatchCustomEvent(widget, submitEvent);
+      dispatchCustomEvent(widget, submitEvent);
 
 			var token = decodeURIComponent(widget.getAttribute("data-token")),
 				referrer = document.location.href,
@@ -581,4 +584,5 @@ var jsonParse = (function () {
 		dispatchCustomEvent(widget, readyEvent);
 	});
 })();
+
 
