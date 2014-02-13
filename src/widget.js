@@ -488,7 +488,7 @@ var jsonParse = (function () {
 			css.setAttribute('id', c + '-css');
 			css.setAttribute('rel', 'stylesheet');
 			css.setAttribute('type', 'text/css');
-			css.setAttribute('href', "//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css");
+			css.setAttribute('href', CSS_URL);
 			document.getElementsByTagName('head')[0].appendChild(css);
 		}
 
@@ -519,7 +519,7 @@ var jsonParse = (function () {
 			e.preventDefault ? e.preventDefault() : null;
 			
 			//IE7 lol
-			if (typeof(event) != "undefined") {
+      if (typeof(event) != "undefined") {
         event.preventDefault ? event.preventDefault() : event.returnValue = false;
       }
 
