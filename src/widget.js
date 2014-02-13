@@ -505,8 +505,6 @@ var jsonParse = (function () {
 			"Your request cannot be processed." : widget.getAttribute("data-message-unprocessed") || "Unfortunately, an error occurred. Please contact us to subscribe.",
 			"The email address is invalid." : widget.getAttribute("data-message-invalid") || "The email you provided is not a valid email address. Please fix it and try again.",
 			"You have subscribed to this Marketing Email." : widget.getAttribute("data-message-success") || "Thanks for subscribing."
-	var parseJSON = function(text){
-		};
 
 		form.addCustomEventListener("submit", function (e) {
 			form = e.srcElement ? e.srcElement : e.target;
