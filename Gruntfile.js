@@ -11,7 +11,7 @@ module.exports = function(grunt) {
   // Define Sauce Lab Browsers
   var browsers = [{
         browserName: "firefox",
-        platform: "Linux"
+        platform: "linux"
     }, {
         browserName: "chrome",
         platform: "XP"
