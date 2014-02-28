@@ -572,7 +572,13 @@ var jsonParse = (function () {
 
 				if(checkDefault("messages", widget, d)){
 					responseDiv.className = responseDiv.className.replace("error", "").replace("success", "") + " " + responseType;
-					responseDiv.innerText = messages[responseEventData.message];
+					responseDiv.innerHTML = messages[responseEventData.message]
+						// replace html entities to prevent xss
+						.replace(/&/g, '&amp;')
+						.replace(/"/g, '&quot;')
+						.replace(/'/g, '&#39;')
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;');
 				}
 				
 				dispatchCustomEvent(widget, responseEvent);
