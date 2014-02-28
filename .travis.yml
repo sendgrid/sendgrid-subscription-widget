@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-  - 0.8
+- 0.8
+before_script:
+- npm install -g grunt-cli
+- "echo '{\"CSS_URL\" : \"build/widget.min.css\",\"DISTRIBUTION_CSS\" : \"//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css\",\"TEST_URL\" : \"sg-subscription-tests.herokuapp.com/subscribe\"}' >> config.json"
 env:
   global:
-      secure: "VaY5VZC4f8ddfKOBxn0StvtBmj5ANYkuFSFgI/Q8UGaSJGlG2ys5UTkAOPJ95UKqTYkZ/5QjbXsRS6K4FplRivC+Nzl+fqjPlxTeb/JDI8bZGkBmbevgqQx+yO50/TlZsp/GVbUmrFCHGyxIIGbTHPzDn6PcBn04yrgzyNFoXzg="
-      secure: "YnitZ2J0KVwcXimw+9hKzWkRFvwOSMYjawosfuSMCyFHq8AgYnSmXqWD+7zAkix4/dwPMELFSrxwfL5oy24Ft473tXVWTyVBsm//Cr8vfhPIXKh7efTePTs7qtzL1LZ++LC40korg38xonMbCvIygCnLqbkkyBeaV28EAoUn5xU="
-before_script:
-  - npm install -g grunt-cli
-  - "echo '{\"CSS_URL\" : \"build/widget.min.css\",\"DISTRIBUTION_CSS\" : \"//s3.amazonaws.com/subscription-cdn/0.1/widget.min.css\",\"TEST_URL\" : \"sg-subscription-tests.herokuapp.com/subscribe\"}' >> config.json"
+  - secure: aXTCLgpQ4Oh11Ycb9QeDeb0dZYUqgXBvM7EtcCGfNAJSNlGa2u9AWp0XMNAlZuG0Yk4GQ/50Eb5CV2SH7lir92TWg0azpTC0r50fjKytnywKBMYtEoj5n9qi7o0loOhJDJb4M8EkAS3Lgclhc0e08KO+dIrANKL5GIB123K8XmA=
+  - secure: bGr99ZklBNCoSzMDxPm54gEMUe/60z/vjsfcwWiy+iwJE7+kGI9gN/bYo1IsE3L9SzZltOUYyrKnWfmNc4VI6iqaz7zIUxtV5enr7zWI3CE7IK3S83kSDqzSu4/eKi13jQq3hLaoID0zEe5G698AAjp5sgORIFz2NKvxytsvKsc=
