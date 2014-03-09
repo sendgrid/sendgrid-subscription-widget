@@ -12,7 +12,7 @@ Include the following code on the page where you wish the widget to appear.
 
 `token` is the `p` parameter from the current SendGrid Subscription Widget URL
 
-_Samples can be found on [Github Pages](http://sendgrid.github.io/sendgrid-subscription-widget/samples/index.html)._
+_Samples can be found on [Github Pages](http://sendgrid.github.io/sendgrid-subscription-widget/examples/basic.html)._
 
 **Note**: With current architecture this widget will only work on the domain specified when generating the token.
 
