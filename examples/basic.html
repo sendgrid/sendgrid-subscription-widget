@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SendGrid Subscription Widget - Basic Demo</title>
+    
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="../images/sendgrid-logo.png" alt="SendGrid">
+        <h1>Subscription Widget</h1>
+        <p class="view"><a href="http://github.com/sendgrid/sendgrid-subscription-widget">View the Project on GitHub <small>sendgrid/sendgrid-subscription-widget</small></a></p>
+      </header>
+      <section>
+        <h1>Basic Widget Demo</h1>
+        <p>The following subscription widget is just dropped in, with no special features. Broadcast events are displayed below the widget for convience.</p>
+
+        <hr>
+
+        <div class="sendgrid-subscription-widget" data-token="uBhSogHh5frxK3A%2FzIdM6hwAZH1YNoWg21TOHQsaOPL%2FGzsYsarbdPFcRITlHfgsL9eAVoYjy3wAR%2B18WtWyQw%3D%3D"></div>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://subscription-cdn.s3-website-us-east-1.amazonaws.com/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+
+        <pre id="events" class="code-block"><code></code></pre>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script>
+          var events = "ready sent error success";
+
+          $.each(events.split(" "), function (i, type){
+            console.log("adding listener for event: " + type);
+            // We use the old school binding rather than jQuery, because the widget code executes and broadcasts ready before $(document).ready() fires
+            document.getElementsByClassName("sendgrid-subscription-widget")[0].addEventListener(type, function (e) {
+              console.log(e);
+              $("#events code").append(e.type + "\n");
+            });
+          });
+        </script>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="http://sendgrid.com/developers">SendGrid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  </body>
+</html>
