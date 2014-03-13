@@ -59,7 +59,7 @@ You may specify whatever you want to include in the form by enclosing it in the 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 ```
 
-If you have additional fields stored by SendGrid that you wish to store with the subscription widget, you must place them in this tag. To determine your fields mappings to our database [the additional fields helper page](http://sendgrid.github.io/sendgrid-subscription-widget/additional-fields.html).
+If you have additional fields stored by SendGrid that you wish to store with the subscription widget, you must place them in this tag. To determine your fields mappings to our database use [the additional fields helper page](http://sendgrid.github.io/sendgrid-subscription-widget/additional-fields.html).
 
 ## Javascript API
 It is possible to add more advanced functionality through the JS API provided by the widget. This is provided in the form of DOM Events that a script may then react to.
