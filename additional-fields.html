@@ -55,10 +55,11 @@
                 if($old.find("script").length == 0){
                   $old.find("label").each(function () {
                     var $labelFor = $("#" + $(this).attr("for") );
+                    var inputName = $labelFor.attr("name").replace(/^SG_widget\[(.+?)\]$/, "$1");
                     if($labelFor.attr("name") !== "SG_widget[email]"){
                       var $formObj = $('<label><span></span><input type="text"></label>');
                       $formObj.find("span").html( $(this).html() );
-                      $formObj.find("input").attr("name", $labelFor.attr("name"));
+                      $formObj.find("input").attr("name", inputName);
                       $form.append($formObj);
                     }
                   });
