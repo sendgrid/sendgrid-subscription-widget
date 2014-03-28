@@ -7,7 +7,7 @@ Include the following code on the page where you wish the widget to appear.
 
 ```html
 <div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO"></div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 ```
 
 `token` is the `p` parameter from the current SendGrid Subscription Widget URL
@@ -56,7 +56,7 @@ You may specify whatever you want to include in the form by enclosing it in the 
 <div class="sendgrid-subscription-widget" data-token="1M5Z249eGJzJ34D5llN3s2KkzNImaU9gZp8ImuJSw1pmhsJvugAYeWJXhtK1aWLO">
     <input type="text" name="happy" value="go lucky" />
 </div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.1/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 ```
 
 If you have additional fields stored by SendGrid that you wish to store with the subscription widget, you must place them in this tag. To determine your fields mappings to our database use [the additional fields helper page](http://sendgrid.github.io/sendgrid-subscription-widget/additional-fields.html).
