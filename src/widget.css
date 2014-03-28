@@ -1,3 +1,13 @@
+.sendgrid-subscription-widget label {
+	display: block;
+}
+.sendgrid-subscription-widget label > span {
+	display: block;
+	font-weight: bold;
+}
+.sendgrid-subscription-widget input {
+	margin: 3px 0;
+}
 .sendgrid-subscription-widget div.response {
 	margin: 5px 0;
 	padding: 0;
@@ -9,7 +19,4 @@
 }
 .sendgrid-subscription-widget div.response.success {
 	color: #35de33;
-}
-.sendgrid-subscription-widget input {
-	margin-left: 10px;
 }
