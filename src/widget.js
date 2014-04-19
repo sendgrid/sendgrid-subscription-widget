@@ -394,12 +394,7 @@ var jsonParse = (function () {
 	// http://www.quirksmode.org/js/xmlhttp.html
 	// License: http://www.quirksmode.org/about/copyright.html
 	sendRequest = function (url,callback,postData) {
-		if (location.protocol === 'https:') {
-			//page is secure
-			url = "https://" + url; 
-		} else {
-			url = "http://" + url; 
-		}
+  		url = "https://" + url; 
 
 		var req = createXMLHTTPObject();
 		if (!req) return;
