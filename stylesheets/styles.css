@@ -223,6 +223,10 @@ footer {
   bottom:50px;
 }
 
+.show-code {
+  margin: 20px 0;
+}
+
 .hide {
   display: none;
 }
