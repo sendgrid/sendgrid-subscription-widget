@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SendGrid Subscription Widget - Basic Demo</title>
+    
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="../images/sendgrid-logo.png" alt="SendGrid">
+        <h1>Subscription Widget</h1>
+        <p class="view"><a href="http://github.com/sendgrid/sendgrid-subscription-widget">View the Project on GitHub <small>sendgrid/sendgrid-subscription-widget</small></a></p>
+      </header>
+      <section>
+        <h1>Additional Form Fields</h1>
+        <p>The following subscription widgets demonstrate how to use additional form field types.</p>
+
+        <p>Note: nothing need be done for text style input fields (e.g. <code>number</code>, <code>date</code>, etc.)</p>
+
+        <!-- Loading jQuery here for the examples sake -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/jquery-1.10.1.min.js"><\/script>')</script>
+  
+        <hr>
+
+        <h2>Select</h2>
+<div class="show-code">
+<div class="sendgrid-subscription-widget" data-token="FatWS8Jq3%2Fd8EyXmuqenVbZU1FbVjcsgKRW%2Fyp71Hf6XSlW5tXWEfolHSW1in8PJUq6yAM0CcRD%2FBeZ93bIIEQ%3D%3D">
+ <label><span>What's your general affection?</span>
+     <input type="hidden" name="a">
+     <select id="affection">
+         <option value="happy">happy</option>
+         <option value="upbeat">upbeat</option>
+         <option value="bubbly">bubbly</option>
+     </select>
+ </label>
+</div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>
+   jQuery(function ($) {
+       $(".sendgrid-subscription-widget").on("ready init", function (e) {
+           $("#affection").off("change.widget init.widget");
+           $("#affection").on("change.widget init.widget", function (e) {
+               e.stopPropagation();
+               var affection = $(this).find("option:selected").val();
+               // This could be made a whole lot more efficient if you apply an id to the hidden element
+               $(this).parent().find("input[type=hidden]").val(affection);
+           }).trigger("init");
+       }).trigger("init");
+   });
+</script>
+</div>
+
+      <h2>Checkbox</h2>
+
+<div class="show-code">
+<div class="sendgrid-subscription-widget" data-token="FatWS8Jq3%2Fd8EyXmuqenVbZU1FbVjcsgKRW%2Fyp71Hf6XSlW5tXWEfolHSW1in8PJUq6yAM0CcRD%2FBeZ93bIIEQ%3D%3D">
+  <label><span>If you're happy and you know it</span>
+      <input type="checkbox" name="a" id="happy">
+      Clap your hands
+  </label>
+</div>
+
+<script>
+   jQuery(function ($) {
+       $(".sendgrid-subscription-widget").on("ready init", function (e) {
+           $("#happy").off("change.widget init.widget");
+           $("#happy").on("change.widget init.widget", function (e) {
+               e.stopPropagation();
+               var $happy = $("#happy");
+               var happy = ($happy.prop('checked')) ? "true" : "false";
+               $happy.val(happy);
+           }).trigger("init");
+       }).trigger("init");
+   });
+</script>
+</div>
+
+
+       <h2>Radio Buttons</h2>
+
+<div class="show-code">
+<div class="sendgrid-subscription-widget" data-token="FatWS8Jq3%2Fd8EyXmuqenVbZU1FbVjcsgKRW%2Fyp71Hf6XSlW5tXWEfolHSW1in8PJUq6yAM0CcRD%2FBeZ93bIIEQ%3D%3D">
+   <label><span>How are you?</span>
+       <input type="radio" name="a" value="great">
+       Great
+   </label>
+   <label>
+       <input type="radio" name="a" value="awesome">
+       Awesome
+   </label>
+</div>
+</div>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="http://sendgrid.com/developers">SendGrid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/highlight.pack.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+    <script src="../javascripts/show-code.js"></script>
+  </body>
+</html>
