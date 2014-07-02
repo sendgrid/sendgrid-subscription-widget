@@ -37,23 +37,22 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
 <script>
    // Make a function to load URL params
-   // http://stackoverflow.com/a/2880929/648494
-   var urlParams;
-   (window.onpopstate = function () {
-       var match,
-           pl     = /\+/g,  // Regex for replacing addition symbol with a space
-           search = /([^&=]+)=?([^&]*)/g,
-           decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-           query  = window.location.search.substring(1);
-
-       urlParams = {};
-       while (match = search.exec(query))
-          urlParams[decode(match[1])] = decode(match[2]);
-   })();
+   // http://stackoverflow.com/a/3855394/648494
+   var qs = (function(a) {
+       if (a == "") return {};
+       var b = {};
+       for (var i = 0; i < a.length; ++i)
+       {
+           var p=a[i].split('=');
+           if (p.length != 2) continue;
+           b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+       }
+       return b;
+   })(window.location.search.substr(1).split('&'));
 
    jQuery(function ($) {
        $(".sendgrid-subscription-widget").on("ready init", function (e) {
-         var email = urlParams["email"] || "";
+         var email = qs["email"] || "";
          $(this).find("input[name=email]").val(email);
        }).trigger("init");
    });
