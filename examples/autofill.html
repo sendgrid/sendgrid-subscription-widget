@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SendGrid Subscription Widget - Autofill Demo</title>
+    
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="../images/sendgrid-logo.png" alt="SendGrid">
+        <h1>Subscription Widget</h1>
+        <p class="view"><a href="http://github.com/sendgrid/sendgrid-subscription-widget">View the Project on GitHub <small>sendgrid/sendgrid-subscription-widget</small></a></p>
+      </header>
+      <section>
+        <h1>Autofill Widget Demo</h1>
+        <p>Often you may want to autofill a form for a user. This allows you to easily do this.</p>
+
+        <!-- Loading jQuery here for the examples sake -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/jquery-1.10.1.min.js"><\/script>')</script>
+  
+
+        <hr>
+
+<div class="show-code">
+<div class="sendgrid-subscription-widget" data-token="FatWS8Jq3%2Fd8EyXmuqenVbZU1FbVjcsgKRW%2Fyp71Hf6XSlW5tXWEfolHSW1in8PJUq6yAM0CcRD%2FBeZ93bIIEQ%3D%3D"></div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'sendgrid-subscription-widget-js');</script>
+<script>
+   // Make a function to load URL params
+   // http://stackoverflow.com/a/2880929/648494
+   var urlParams;
+   (window.onpopstate = function () {
+       var match,
+           pl     = /\+/g,  // Regex for replacing addition symbol with a space
+           search = /([^&=]+)=?([^&]*)/g,
+           decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+           query  = window.location.search.substring(1);
+
+       urlParams = {};
+       while (match = search.exec(query))
+          urlParams[decode(match[1])] = decode(match[2]);
+   })();
+
+   jQuery(function ($) {
+       $(".sendgrid-subscription-widget").on("ready init", function (e) {
+         var email = urlParams["email"] || "";
+         $(this).find("input[name=email]").val(email);
+       }).trigger("init");
+   });
+</script>
+</div>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="http://sendgrid.com/developers">SendGrid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="../javascripts/highlight.pack.js"></script>
+    <script src="../javascripts/scale.fix.js"></script>
+    <script src="../javascripts/show-code.js"></script>
+  </body>
+</html>
