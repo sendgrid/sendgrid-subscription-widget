@@ -59,6 +59,17 @@
 </script>
 </div>
 
+        <hr>
+        <h2>Advanced Autofill</h2>
+        <p style="font-style:italic">Occasionally, you may want autofill more than just an email for this, you&#8217;ll likely want to check out <a href="https://github.com/kflorence/jquery-deserialize">jquery-deserialize</a>, a jQuery Plugin that allows for deserializing strings (such as the URL query string).</p>
+
+        <p>To use <a href="https://github.com/kflorence/jquery-deserialize">jquery-deserialize</a>, you&#8217;ll load the script and then use the following code:</p>
+<pre><code>jQuery(function ($) {
+  $(".sendgrid-subscription-widget").on("ready init", function (e) {
+   $(this).find("form").deserialize( location.search.substr( 1 ) );
+  }).trigger("init");
+});</code></pre>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="http://sendgrid.com/developers">SendGrid</a></p>
