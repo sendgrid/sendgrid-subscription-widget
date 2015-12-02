@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     
     replace: {
       build: {
-        src: ['src/widget.js'],
+        src: ['src/widget.js', 'src/threads-io-binding.js'],
         dest: '<%= target %>/',
         replacements: [
           {
@@ -37,8 +37,10 @@ module.exports = function(grunt) {
         banner: '<%= banner %>\n'
       },
       build: {
-        src: '<%= target %>/widget.js',
-        dest: '<%= target %>/widget.min.js'
+        files: [{
+           '<%= target %>/widget.min.js': '<%= target %>/widget.js',
+           '<%= target %>/threads-io-binding.min.js': '<%= target %>/threads-io-binding.js'
+        }]
       }
     },
     cssmin: {
