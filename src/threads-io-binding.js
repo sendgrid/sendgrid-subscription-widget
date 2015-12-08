@@ -1,18 +1,18 @@
 (function() {
-  var threads_ref;
-  if (typeof threads != 'undefined')
-    threads_ref = threads;
-
-  if (typeof window.threads != 'undefined')
-    threads_ref = window.threads;
-
-  if (typeof threads_ref != 'undefined')
+  var widgets = document.getElementsByClassName("sendgrid-subscription-widget");
+  for(var i = 0; i < widgets.length; i++)
   {
-    var widgets = document.getElementsByClassName("sendgrid-subscription-widget");
-    for(var i = 0; i < widgets.length; i++)
-    {
-      (function (_widget) {
-        _widget.addEventListener("success", function(e)
+    (function (_widget) {
+      _widget.addEventListener("success", function(e)
+      {
+        var threads_ref;
+        if (typeof threads != 'undefined')
+          threads_ref = threads;
+
+        if (typeof window.threads != 'undefined')
+          threads_ref = window.threads;
+
+        if (typeof threads_ref != 'undefined')
         {
           var fields = e.srcElement.getElementsByTagName("input");
           var email = "";
@@ -35,8 +35,8 @@
           {
             threads_ref.track('Subscribed to Newsletter', eventTrack);
           }
-        });
-      })(widgets[i]);
-    }
+        }
+      });
+    })(widgets[i]);
   }
 })();
