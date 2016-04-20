@@ -1,3 +1,5 @@
+#WARNING: This code currently only works with the legacy newsletter tool, not the current Marketing Campaigns tool. Please add your comment to https://github.com/sendgrid/sendgrid-subscription-widget/issues/16 if you'd like to see to Marketing Campaigns support. 
+
 # SendGrid Subscription Widget
 A new SendGrid subscription widget that works with existing infrastructure.
 
