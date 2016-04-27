@@ -125,6 +125,35 @@ $(".sendgrid-subscription-widget").on("success", function () {
 });
 ```
 
+### Track A Subscription With Threads
+
+How to use Threads javascript library in your page: https://support.threads.io/hc/en-us/articles/206043007-How-do-I-start-tracking-events-using-Javascript
+
+If you are using the Threads.io library in the page that you have this widget, and you want to have Threads Events generated when a user subscribes using this widget you must include the threads-io-binding.min.js.
+
+```html
+<script src="https://s3.amazonaws.com/subscription-cdn/0.2/threads-io-binding.min.js"></script>
+```
+
+By including threads-io-binding.min.js into your page if the widget successfuly adds the email to the list, it will send a "Subscribed to Newsletter" event on threads (if the threads library is included in the page)
+
+Example of event received on Threads.io: 
+
+```json
+{
+  "type": "track",
+  "source": "threads",
+  "user_id": "userid",
+  "ts": "2015-12-03T16:12:47+0200",
+  "event": "Subscribed to Newsletter",
+  "properties": {
+    "id": "2BnzgiPNveZcxfQ4EJTDljwMH",
+    "email": "example@example.com"
+  }
+}
+```
+In the proprieties you should find the encoded id of the newsletter list (in order to differenciate from if multiple subscription widgets are on the page) and the email added to the list.
+
 ---
 
 ## Development
